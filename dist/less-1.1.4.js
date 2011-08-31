@@ -2292,7 +2292,9 @@ tree.Selector = function (elements) {
     }
 };
 tree.Selector.prototype.match = function (other) {
-    if (this.elements[0].value === other.elements[0].value) {
+	// elements sizes must match, otherwise something like ".cssClass .cssSubClass" will match with ".cssClass"
+    if ((this.elements.length == other.elements.length)
+    		&& (this.elements[0].value === other.elements[0].value)) {
         return true;
     } else {
         return false;
